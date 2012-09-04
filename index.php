@@ -93,11 +93,11 @@
         <!-- your data.  To learn more about Open Graph, visit       -->
         <!-- 'https://developers.facebook.com/docs/opengraph/'       -->
         <meta property="og:title" content="<?php echo he($app_name); ?>" />
-        <meta property="og:type" content="geomusic:track" />
+        <meta property="og:type" content="musicin:track" />
         <meta property="og:url" content="<?php echo AppInfo::getUrl(); ?>" />
         <meta property="og:image" content="<?php echo AppInfo::getUrl('/logo.png'); ?>" />
         <meta property="og:site_name" content="<?php echo he($app_name); ?>" />
-        <meta property="og:description" content="Geomusic" />
+        <meta property="og:description" content="MusicIn" />
         <meta property="fb:app_id" content="<?php echo AppInfo::appID(); ?>" />
         
         <script type="text/javascript" src="/javascript/jquery-1.7.1.min.js"></script>
@@ -105,13 +105,13 @@
         <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
         <script src="http://www.parsecdn.com/js/parse-1.0.0.min.js"></script>
         <script type="text/javascript">
-            //Initialization of PArse.com the database
+            //Initialization of Parse.com database
             Parse.initialize("3oz87vs9DLzbaNPdd2Ih4YhJteoFaQGGNbC4i22D", "N1Us2fJby6wxLJT39kg1erQMnTP7QjZ7tO4p6bk2");
             
             //Global variables
             var nameSongSelected=''; 
             var hrefSong='';
-            var lat='51.523777878854176'; //Location in case that the geolocations doesn't work
+            var lat='51.523777878854176'; //Location in case that the geolocation doesn't work
             var long='-0.04055500030517578';
             var placeId=''; //Data about the place selected
             var placeName='';
@@ -119,8 +119,7 @@
             
             var availablePlaces=new Array();
             
-           //Fucntion to search the tracks in the Spotify library from a name introduced by the user.
-            
+           //Function to search the tracks in the Spotify library from a name introduced by the user.
             function searchSong(){ 
                 var name= $("#songName").val();
                alert("name");
@@ -158,7 +157,7 @@
                        }
             
             
-            //This function is called when the user select a song and store the data about that track, calling after the getPlaces() funciton.
+            //This function is called when the user select a song and store the data about that track, calling after the getPlaces() function.
             function saveSong(name, href){
                 
                 nameSongSelected=name;
@@ -188,8 +187,7 @@
        
                         
            
-            //This function search the near Facebook Places in relation with the location of the user and show the results in a list
-            
+            //This function search the nearest Facebook Places in relation with the location of the user and show the results in a list
             function getPlaces(){
                 
                 
@@ -212,8 +210,7 @@
                        });                
             }
             
-            //This function save the info about the place selected by the user and call the function to show the values
-            
+            //This function saves the info about the place selected by the user and call the function to show the values
             function savePlace(p){
             
                 placeId=availablePlaces[p].id;
@@ -238,7 +235,7 @@
                 saveTrack();
                 
             }
-             //This function save the musicIn object in the database.
+             //This function save the musicIn object in the Parse database.
             function saveTrack(){
                 var Track = Parse.Object.extend("Track");
                 var track = new Track();
@@ -314,7 +311,7 @@
         <div data-role="page" id="welcome" data-theme="a">
             
             <div data-role="header" data-theme="a">
-                <h1 data-theme="a">GeoMusic</h1>
+                <h1 data-theme="a">MusicIn</h1>
             </div><!-- /header -->
             
             <div data-role="content">
@@ -325,7 +322,7 @@
             </div>
             <?php } else { ?>
             <div>
-                <h1>Welcome to GeoMusic! Log in with Facebook please!</h1>
+                <h1>Welcome to MusicIn! Log in with Facebook please!</h1>
                 <div class="fb-login-button" data-scope="user_likes,user_photos"></div>
             </div>
             <?php } ?>
@@ -334,7 +331,7 @@
         
         <div data-role="page" id="spotify">
             <div data-role="header" data-theme="a">
-                <h1 data-theme="a">GeoMusic</h1>
+                <h1 data-theme="a">MusicIn</h1>
             </div><!-- /header -->
             <div data-role="content">
                 <fieldset>
@@ -349,7 +346,7 @@
         
         <div data-role="page" id="spotifyresults">
             <div data-role="header" data-theme="a">
-                <h1 data-theme="a">GeoMusic</h1>
+                <h1 data-theme="a">MusicIn</h1>
             </div><!-- /header -->
             <div data-role="content">
                 
@@ -363,7 +360,7 @@
         
         <div data-role="page" id="location">
             <div data-role="header" data-theme="a">
-<h1 data-theme="a">GeoMusic: Where are ypu dancing?</h1>
+<h1 data-theme="a">MusicIn: Where are ypu dancing?</h1>
             </div><!-- /header -->
             <div data-role="content">
                 
@@ -378,11 +375,11 @@
         
         <div data-role="page" id="presend">
             <div data-role="header" data-theme="a">
-                <h1 data-theme="a">GeoMusic</h1>
+                <h1 data-theme="a">MusicIn</h1>
             </div><!-- /header -->
             <div data-role="content">
                 <form method="post" action="track.php" id="formSend" onsubmit="return saveTrack();" data-ajax="false">
-                <h2> So....you are dancing:</h2>
+                <h2> So... you are listening to:</h2>
                 <fieldset>
                     <div data-role="fieldcontain">
                         <h3>The song:</h3>
